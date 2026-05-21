@@ -1,0 +1,1164 @@
+/* ==========================================================================
+   DEMINA — Home pública
+   Archivo: resources/css/public/home.css
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Variables visuales
+   ========================================================================== */
+
+:root {
+  --demina-bg: #06080c;
+  --demina-bg-2: #0a0e15;
+  --demina-surface: #0f1520;
+  --demina-surface-2: #141c2a;
+
+  --demina-border: #1a2438;
+  --demina-border-2: #243047;
+
+  --demina-cobalt: #1a56db;
+  --demina-cobalt-2: #2563eb;
+  --demina-cobalt-3: #3b82f6;
+  --demina-cobalt-dim: #0c2454;
+
+  --demina-white: #dce8f5;
+  --demina-white-2: #7a98bc;
+  --demina-white-3: #3a5070;
+
+  --demina-glitch-red: #e03060;
+  --demina-glitch-blue: #1a56db;
+
+  --demina-display: 'Anton', sans-serif;
+  --demina-display-condensed: 'Barlow Condensed', sans-serif;
+  --demina-mono: 'IBM Plex Mono', monospace;
+}
+
+/* ==========================================================================
+   Base home
+   ========================================================================== */
+
+.demina-home,
+.demina-home * {
+  box-sizing: border-box;
+}
+
+.demina-home {
+  position: relative;
+  background: var(--demina-bg);
+  color: var(--demina-white);
+  font-family: var(--demina-mono);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+.demina-home::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 0, 0, 0.07) 3px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+}
+
+#cursor-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 79;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+
+.demina-section-number {
+  font-family: var(--demina-display);
+  font-size: clamp(5rem, 12vw, 10rem);
+  line-height: 1;
+  color: var(--demina-border-2);
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+.demina-link-more {
+  align-self: flex-end;
+  border-bottom: 1px solid var(--demina-cobalt);
+  padding-bottom: 2px;
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.demina-link-more:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.demina-empty-state {
+  border: 2px dashed var(--demina-border-2);
+  padding: 2rem;
+  color: var(--demina-white-2);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+
+.demina-btn,
+.demina-btn-outline,
+.demina-btn-blue,
+.demina-btn-light-outline {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--demina-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: crosshair;
+  transition: all 0.15s;
+}
+
+.demina-btn {
+  border: 2px solid #fff;
+  background: #fff;
+  color: var(--demina-cobalt);
+}
+
+.demina-btn:hover {
+  border-color: var(--demina-cobalt-dim);
+  background: var(--demina-cobalt-dim);
+  color: #fff;
+}
+
+.demina-btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: #fff;
+}
+
+.demina-btn-outline:hover {
+  border-color: #fff;
+}
+
+.demina-btn-blue {
+  border: 2px solid var(--demina-cobalt);
+  background: var(--demina-cobalt);
+  color: #fff;
+}
+
+.demina-btn-blue:hover {
+  border-color: var(--demina-cobalt-2);
+  background: var(--demina-cobalt-2);
+}
+
+.demina-btn-light-outline {
+  border: 2px solid rgba(220, 232, 245, 0.4);
+  background: transparent;
+  color: var(--demina-white);
+}
+
+.demina-btn-light-outline:hover {
+  border-color: #fff;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.demina-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--demina-bg);
+}
+
+.demina-hero__image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.demina-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: contrast(1.08) brightness(0.72) saturate(1.05);
+  transition: filter 0.25s ease, transform 0.4s ease;
+  will-change: transform;
+}
+
+.demina-hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(6, 8, 12, 0.95) 0%, rgba(6, 8, 12, 0.35) 55%, transparent 100%),
+    linear-gradient(120deg, rgba(6, 8, 12, 0.65) 0%, transparent 65%);
+}
+
+.demina-hero__geo {
+  position: absolute;
+  top: 5.5rem;
+  right: 2rem;
+  z-index: 4;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--demina-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  line-height: 1.8;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.demina-hero__time {
+  position: absolute;
+  right: 2rem;
+  bottom: 6.5rem;
+  z-index: 4;
+  color: rgba(255, 255, 255, 0.22);
+  font-family: var(--demina-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.demina-hero__clock {
+  display: block;
+  color: var(--demina-cobalt-3);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.demina-hero__body {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 48px;
+}
+
+.demina-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin: 0 2rem 1.6rem;
+  border: 1px solid var(--demina-cobalt);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.28rem 0.8rem;
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.demina-hero__tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--demina-cobalt-3);
+  animation: demina-pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes demina-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.6);
+  }
+}
+
+.demina-hero__title {
+  padding: 0 2rem;
+  font-family: var(--demina-display);
+  font-size: clamp(5rem, 16vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+}
+
+.demina-hero__highlight {
+  color: var(--demina-cobalt-3);
+}
+
+.demina-glitch {
+  position: relative;
+  display: block;
+  color: var(--demina-white);
+}
+
+.demina-glitch::before,
+.demina-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.demina-glitch::before {
+  color: var(--demina-glitch-blue);
+  animation: demina-glitch-blue 5s steps(1) infinite;
+}
+
+.demina-glitch::after {
+  color: var(--demina-glitch-red);
+  animation: demina-glitch-red 5s steps(1) infinite;
+}
+
+@keyframes demina-glitch-blue {
+  0%,
+  91%,
+  100% {
+    clip-path: inset(0 0 101% 0);
+    transform: translate(0);
+  }
+
+  92% {
+    clip-path: inset(6% 0 90% 0);
+    transform: translate(-6px, 0);
+  }
+
+  93% {
+    clip-path: inset(20% 0 74% 0);
+    transform: translate(5px, 0);
+  }
+
+  94% {
+    clip-path: inset(42% 0 50% 0);
+    transform: translate(-4px, 0);
+  }
+
+  95% {
+    clip-path: inset(58% 0 32% 0);
+    transform: translate(6px, 0);
+  }
+
+  96% {
+    clip-path: inset(0 0 101% 0);
+    transform: translate(0);
+  }
+
+  97% {
+    clip-path: inset(76% 0 12% 0);
+    transform: translate(-3px, 0);
+  }
+}
+
+@keyframes demina-glitch-red {
+  0%,
+  91%,
+  100% {
+    clip-path: inset(0 0 101% 0);
+    transform: translate(0);
+  }
+
+  92% {
+    clip-path: inset(14% 0 80% 0);
+    transform: translate(5px, 0);
+  }
+
+  93% {
+    clip-path: inset(33% 0 57% 0);
+    transform: translate(-5px, 0);
+  }
+
+  94% {
+    clip-path: inset(52% 0 38% 0);
+    transform: translate(4px, 0);
+  }
+
+  95% {
+    clip-path: inset(0 0 101% 0);
+    transform: translate(0);
+  }
+
+  96% {
+    clip-path: inset(68% 0 20% 0);
+    transform: translate(-4px, 0);
+  }
+
+  97% {
+    clip-path: inset(80% 0 8% 0);
+    transform: translate(5px, 0);
+  }
+}
+
+.demina-hero__strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  background: var(--demina-cobalt);
+  padding: 1.2rem 2rem;
+}
+
+.demina-hero__strip-text {
+  max-width: 620px;
+  color: #fff;
+  font-family: var(--demina-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.demina-hero__strip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Ticker
+   ========================================================================== */
+
+.demina-ticker {
+  overflow: hidden;
+  border-top: 1px solid var(--demina-border-2);
+  border-bottom: 3px solid var(--demina-cobalt-3);
+  background: var(--demina-bg-2);
+  padding: 0.55rem 0;
+}
+
+.demina-ticker__track {
+  display: flex;
+  color: var(--demina-white-2);
+  font-family: var(--demina-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: demina-ticker 28s linear infinite;
+}
+
+.demina-ticker__track:hover {
+  animation-play-state: paused;
+}
+
+.demina-ticker__item {
+  padding: 0 2rem;
+}
+
+.demina-ticker__dot {
+  padding: 0 0.4rem;
+  color: var(--demina-cobalt-3);
+}
+
+@keyframes demina-ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================================================
+   Programación
+   ========================================================================== */
+
+.demina-program {
+  border-top: 4px solid var(--demina-cobalt);
+  background: var(--demina-surface);
+}
+
+.demina-program__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border-bottom: 2px solid var(--demina-border-2);
+}
+
+.demina-program__number {
+  border-right: 2px solid var(--demina-border-2);
+  padding: 2rem 2rem 1rem;
+}
+
+.demina-program__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 2.5rem;
+}
+
+.demina-program__title h2 {
+  margin-bottom: 1rem;
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.demina-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.demina-event-card {
+  position: relative;
+  display: flex;
+  min-height: 460px;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 2px solid var(--demina-border-2);
+  border-bottom: 2px solid var(--demina-border-2);
+  color: inherit;
+  text-decoration: none;
+  cursor: crosshair;
+  transition: background 0.2s;
+}
+
+.demina-event-card:nth-child(3n) {
+  border-right: none;
+}
+
+.demina-event-card:hover {
+  background: var(--demina-surface-2);
+}
+
+.demina-event-card__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-bottom: 2px solid var(--demina-border-2);
+  background: var(--demina-bg-2);
+}
+
+.demina-event-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.48) contrast(1.15);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.demina-event-card:hover .demina-event-card__image img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.9) contrast(1.08) saturate(1.08);
+}
+
+.demina-event-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(26, 86, 219, 0.2), transparent 45%),
+    var(--demina-bg-2);
+  color: var(--demina-white-3);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.demina-event-card__body {
+  position: relative;
+  flex: 1;
+  padding: 1.6rem 1.8rem 2rem;
+}
+
+.demina-event-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.demina-event-card__date {
+  color: var(--demina-white-2);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.demina-event-card__tag {
+  padding: 0.2rem 0.5rem;
+  background: var(--demina-cobalt-3);
+  color: var(--demina-bg);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.demina-event-card__title {
+  margin-bottom: 0.6rem;
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.demina-event-card:hover .demina-event-card__title {
+  color: var(--demina-cobalt-3);
+}
+
+.demina-event-card__place {
+  margin-bottom: 0.5rem;
+  color: var(--demina-white-2);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-event-card__description {
+  color: var(--demina-white-2);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.demina-event-card__arrow {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  color: var(--demina-cobalt-3);
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.demina-event-card:hover .demina-event-card__arrow {
+  opacity: 1;
+}
+
+.demina-event-card__title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.demina-event-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    position: relative;
+    z-index: 3;
+}
+
+.demina-event-card__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.demina-event-card__button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.demina-event-card__button--ghost {
+    background: transparent;
+}
+
+.demina-event-card__image {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Espacios
+   ========================================================================== */
+
+.demina-spaces {
+  position: relative;
+  border-top: 4px solid var(--demina-cobalt);
+  background: var(--demina-bg);
+}
+
+.demina-spaces__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--demina-border-2);
+  padding: 2.5rem 2rem;
+}
+
+.demina-spaces__eyebrow {
+  margin-bottom: 0.6rem;
+  color: var(--demina-cobalt-3);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.demina-spaces__head h2 {
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.demina-spaces-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.demina-space-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-right: 1px solid var(--demina-border);
+  border-bottom: 1px solid var(--demina-border);
+  color: inherit;
+  text-decoration: none;
+  cursor: crosshair;
+}
+
+.demina-space-card:nth-child(3n) {
+  border-right: none;
+}
+
+.demina-space-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.42) contrast(1.08);
+  transition: filter 0.45s ease, transform 0.6s ease;
+}
+
+.demina-space-card:hover .demina-space-card__image {
+  transform: scale(1.03);
+  filter: grayscale(0%) brightness(0.88) contrast(1.05) saturate(1.08);
+}
+
+.demina-space-card__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.demina-space-card__info {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.82), transparent 60%);
+}
+
+.demina-space-card__num {
+  margin-bottom: auto;
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+}
+
+.demina-space-card__name {
+  margin-bottom: 0.4rem;
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.demina-space-card__description {
+  color: rgba(220, 232, 245, 0.5);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Espacios — hover mejorado (complemento al efecto canvas JS)
+   ========================================================================== */
+
+/**
+ * Borde cobalto que aparece en hover usando ::after overlay.
+ * z-index 5: encima del canvas (2) y la info (3), debajo de nada más.
+ */
+.demina-space-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  border: 0px solid var(--demina-cobalt-3);
+  transition: border-width 0.25s ease, border-color 0.25s ease;
+}
+
+.demina-space-card:hover::after {
+  border-width: 2px;
+  border-color: var(--demina-cobalt);
+}
+
+/* Nombre del espacio cambia a cobalto en hover */
+.demina-space-card__name {
+  transition: color 0.3s ease;
+}
+
+.demina-space-card:hover .demina-space-card__name {
+  color: var(--demina-cobalt-3);
+}
+
+/* Número del espacio se aclara en hover */
+.demina-space-card__num {
+  transition: color 0.3s ease;
+}
+
+.demina-space-card:hover .demina-space-card__num {
+  color: rgba(220, 232, 245, 0.7);
+}
+
+/* Descripción se aclara ligeramente */
+.demina-space-card:hover .demina-space-card__description {
+  color: rgba(220, 232, 245, 0.55);
+  transition: color 0.3s ease;
+}
+
+/* Performance hints para la imagen */
+.demina-space-card__image {
+  will-change: transform, filter;
+}
+
+/* Canvas: hint de rendimiento — el JS anima opacity vía clearRect */
+.demina-space-card__canvas {
+  will-change: opacity;
+}
+
+.demina-community {
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--demina-cobalt);
+}
+
+.demina-community__image-wrap {
+  position: relative;
+  min-height: 500px;
+  height: 85vh;
+}
+
+.demina-community__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.32);
+}
+
+.demina-community__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2.5rem;
+  background: linear-gradient(120deg, rgba(6, 8, 12, 0.78) 0%, transparent 65%);
+}
+
+.demina-community__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  color: var(--demina-cobalt-3);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.demina-community__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  background: var(--demina-cobalt-3);
+}
+
+.demina-community__title {
+  max-width: 800px;
+  margin-bottom: 2.5rem;
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.demina-community__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .demina-program__head {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-program__number {
+    border-right: none;
+    border-bottom: 2px solid var(--demina-border-2);
+  }
+
+  .demina-events-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .demina-event-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .demina-spaces-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .demina-space-card:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .demina-hero__geo,
+  .demina-hero__time {
+    display: none;
+  }
+
+  .demina-hero__title {
+    font-size: clamp(4rem, 22vw, 9rem);
+  }
+
+  .demina-hero__strip {
+    align-items: flex-start;
+  }
+
+  .demina-hero__strip-actions {
+    width: 100%;
+  }
+
+  .demina-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-event-card {
+    border-right: none;
+  }
+
+  .demina-spaces-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-space-card {
+    border-right: none;
+  }
+}
+
+/* ==========================================================================
+   Fallbacks visuales sin imágenes externas
+   ========================================================================== */
+
+.demina-hero__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.22), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(26, 86, 219, 0.18), transparent 40%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 45%, #05070a 100%);
+}
+
+.demina-space-card__fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(26, 86, 219, 0.22), transparent 45%),
+    linear-gradient(45deg, #06080c, #101827);
+}
+
+.demina-community__fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(59, 130, 246, 0.2), transparent 35%),
+    linear-gradient(120deg, #06080c 0%, #101827 50%, #05070a 100%);
+}
+
+/* ==========================================================================
+   Convocatoria destacada en Home
+   ========================================================================== */
+
+.demina-home-call {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+  border-top: 4px solid var(--demina-cobalt);
+  border-bottom: 1px solid var(--demina-border-2);
+  background: var(--demina-surface);
+}
+
+.demina-home-call__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--demina-bg-2);
+}
+
+.demina-home-call__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.45) contrast(1.12);
+  transition: filter 0.5s ease, transform 0.6s ease;
+}
+
+.demina-home-call:hover .demina-home-call__media img {
+  transform: scale(1.03);
+  filter: grayscale(0%) brightness(0.88) contrast(1.08) saturate(1.08);
+}
+
+.demina-home-call__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.25), transparent 35%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
+}
+
+.demina-home-call__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+}
+
+.demina-home-call__eyebrow {
+  width: fit-content;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--demina-cobalt);
+  background: rgba(59, 130, 246, 0.08);
+  padding: 0.32rem 0.8rem;
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.demina-home-call__title {
+  max-width: 720px;
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.demina-home-call__description {
+  max-width: 620px;
+  margin-top: 1.25rem;
+  color: var(--demina-white-2);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.demina-home-call__date {
+  margin-top: 1.5rem;
+  color: rgba(220, 232, 245, 0.7);
+  font-family: var(--demina-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.demina-home-call__button {
+  width: fit-content;
+  margin-top: 2rem;
+  border: 1px solid var(--demina-cobalt);
+  background: var(--demina-cobalt);
+  padding: 0.8rem 1.2rem;
+  color: #fff;
+  font-family: var(--demina-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demina-home-call__button:hover {
+  background: var(--demina-cobalt-2);
+}
+
+@media (max-width: 900px) {
+  .demina-home-call {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-home-call__media {
+    min-height: 320px;
+  }
+}

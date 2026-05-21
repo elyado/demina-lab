@@ -1,0 +1,134 @@
+/* ==========================================================================
+   DEMINA — Footer público
+   ========================================================================== */
+
+.public-footer {
+  border-top: 4px solid #1a56db;
+  background: #0a0e15;
+  color: #dce8f5;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.public-footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem 1.5rem;
+}
+
+.public-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #1a2438;
+}
+
+.public-footer__brand {
+  margin-bottom: 1rem;
+}
+
+.public-footer__logo {
+  display: block;
+  width: auto;
+  max-width: 180px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.public-footer__fallback {
+  color: #3b82f6;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.8rem;
+  line-height: 0.92;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.public-footer__tagline {
+  max-width: 320px;
+  color: #7a98bc;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.public-footer__label {
+  margin-bottom: 1rem;
+  color: #3b82f6;
+  font-size: 0.56rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.public-footer__links {
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.public-footer__links a,
+.public-footer__contact a {
+  color: #7a98bc;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.public-footer__links a:hover,
+.public-footer__contact a:hover {
+  color: #dce8f5;
+}
+
+.public-footer__contact {
+  display: grid;
+  gap: 0.4rem;
+  color: #7a98bc;
+  font-size: 0.74rem;
+  line-height: 1.7;
+}
+
+.public-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.public-footer__social {
+  border: 1px solid rgba(122, 152, 188, 0.35);
+  padding: 0.45rem 0.65rem;
+  color: #7a98bc;
+  font-size: 0.62rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.public-footer__social:hover {
+  border-color: #3b82f6;
+  color: #dce8f5;
+}
+
+.public-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  color: #3a5070;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .public-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .public-footer__inner {
+    padding: 2.5rem 1rem 1.25rem;
+  }
+}

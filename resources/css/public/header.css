@@ -1,0 +1,239 @@
+/* ==========================================================================
+   DEMINA — Header público
+   Archivo: resources/css/public/header.css
+   ========================================================================== */
+
+.public-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  height: 64px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+  background: rgba(6, 8, 12, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.public-header__inner {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  align-items: center;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.public-header__brand {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.public-header__logo {
+  display: block;
+  width: auto;
+  height: 50px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.public-header__fallback {
+  color: #3b82f6;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.public-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.55rem;
+}
+.public-header__link {
+  position: relative;
+  color: rgba(220, 232, 245, 0.78);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.public-header__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 100%;
+  height: 1px;
+  background: #3b82f6;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.public-header__link:hover,
+.public-header__link.is-active {
+  color: #dce8f5;
+}
+
+.public-header__link:hover::after,
+.public-header__link.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.public-header__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.public-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 1.25rem;
+  font-size: 0.76rem;
+  border: 1px solid rgba(220, 232, 245, 0.32);
+  border-radius: 999px;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.public-header__cta:hover {
+  border-color: #3b82f6;
+  background: #1a56db;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .public-header {
+    height: auto;
+  }
+
+  .public-header__inner {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .public-header__nav {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .public-header__actions {
+    justify-content: flex-end;
+  }
+
+  .public-header__logo {
+    height: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .public-header__nav {
+    display: none;
+  }
+
+  .public-header__inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .public-header__cta {
+    min-height: 34px;
+    padding: 0 0.9rem;
+    font-size: 0.62rem;
+  }
+}
+
+/* ==========================================================================
+   Header dropdown — Espacios
+   ========================================================================== */
+
+.public-header__dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.public-header__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.public-header__dropdown-trigger::before {
+  content: '';
+}
+
+.public-header__dropdown-trigger::after {
+  content: '';
+}
+
+.public-header__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  z-index: 1000;
+  min-width: 240px;
+  transform: translateX(-50%) translateY(8px);
+  border: 1px solid rgba(59, 130, 246, 0.38);
+  background: rgba(6, 8, 12, 0.98);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  padding: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.public-header__dropdown:hover .public-header__dropdown-menu,
+.public-header__dropdown:focus-within .public-header__dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.public-header__dropdown-item {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  color: rgba(220, 232, 245, 0.72);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.public-header__dropdown-item:hover {
+  background: rgba(59, 130, 246, 0.12);
+  color: #dce8f5;
+}
+
+.public-header__dropdown-item--all {
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(122, 152, 188, 0.22);
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .public-header__dropdown-menu {
+    display: none;
+  }
+}

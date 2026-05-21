@@ -1,0 +1,287 @@
+/* ==========================================================================
+   DEMINA — Detalle de evento
+   ========================================================================== */
+
+.demina-event-show {
+  background: #06080c;
+  color: #dce8f5;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.demina-event-hero {
+  position: relative;
+  min-height: 72vh;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+  background: #06080c;
+}
+
+.demina-event-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.demina-event-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.42) contrast(1.15);
+}
+
+.demina-event-hero__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.22), transparent 35%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
+}
+
+.demina-event-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(6, 8, 12, 0.98) 0%, rgba(6, 8, 12, 0.62) 48%, rgba(6, 8, 12, 0.22) 100%),
+    linear-gradient(120deg, rgba(6, 8, 12, 0.82), transparent 65%);
+}
+
+.demina-event-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 7rem 2rem 4rem;
+}
+
+.demina-event-hero__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  color: #7a98bc;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-event-hero__breadcrumb a {
+  color: #7a98bc;
+  text-decoration: none;
+}
+
+.demina-event-hero__breadcrumb a:hover {
+  color: #dce8f5;
+}
+
+.demina-event-hero__tag {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  background: #3b82f6;
+  padding: 0.28rem 0.62rem;
+  color: #06080c;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-event-hero__title {
+  max-width: 980px;
+  color: #dce8f5;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3.6rem, 10vw, 8.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.demina-event-hero__subtitle {
+  max-width: 760px;
+  margin-top: 1.25rem;
+  color: #b9cbe0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.demina-event-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 2.2rem;
+  border: 1px solid #243047;
+  background: #243047;
+}
+
+.demina-event-fact {
+  background: rgba(15, 21, 32, 0.88);
+  padding: 1rem;
+}
+
+.demina-event-fact__label {
+  margin-bottom: 0.45rem;
+  color: #3a5070;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.demina-event-fact__value {
+  color: #dce8f5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.demina-event-body {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 3rem;
+}
+
+.demina-event-content {
+  min-width: 0;
+}
+
+.demina-event-lead {
+  margin-bottom: 2rem;
+  color: #b9cbe0;
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+.demina-event-prose {
+  color: #dce8f5;
+  line-height: 1.8;
+}
+
+.demina-event-prose p {
+  margin-bottom: 1.2rem;
+}
+
+.demina-event-prose h2,
+.demina-event-prose h3 {
+  margin: 2rem 0 1rem;
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+}
+
+.demina-event-section {
+  margin-top: 3rem;
+  border-top: 1px solid #243047;
+  padding-top: 2rem;
+}
+
+.demina-event-section__title {
+  margin-bottom: 1rem;
+  color: #dce8f5;
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.demina-event-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.demina-event-pill {
+  border: 1px solid rgba(122, 152, 188, 0.35);
+  padding: 0.45rem 0.7rem;
+  color: #7a98bc;
+  font-size: 0.72rem;
+}
+
+.demina-event-side {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.demina-event-side__box {
+  border: 1px solid #243047;
+  background: #0f1520;
+  padding: 1.25rem;
+}
+
+.demina-event-side__title {
+  margin-bottom: 1rem;
+  color: #3b82f6;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.demina-event-side dl {
+  display: grid;
+  gap: 1rem;
+}
+
+.demina-event-side dt {
+  color: #3a5070;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.demina-event-side dd {
+  margin-top: 0.25rem;
+  color: #dce8f5;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.demina-event-back {
+  display: block;
+  margin-top: 1rem;
+  border: 1px solid rgba(220, 232, 245, 0.32);
+  padding: 0.8rem 1rem;
+  color: #dce8f5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demina-event-back:hover {
+  border-color: #3b82f6;
+  background: #1a56db;
+}
+
+@media (max-width: 900px) {
+  .demina-event-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .demina-event-body {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-event-side {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .demina-event-hero__content {
+    padding: 5rem 1rem 3rem;
+  }
+
+  .demina-event-body {
+    padding: 3rem 1rem;
+  }
+
+  .demina-event-facts {
+    grid-template-columns: 1fr;
+  }
+}

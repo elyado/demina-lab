@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+@import 'tailwindcss';
+@import './public/home.css';
+@import './public/header.css';
+@import './public/agenda.css';
+@import './public/event-show.css';
+@import './public/calls.css';
+@import './public/exhibitions.css';
+@import './public/spaces.css';
+@import './public/archive.css';
+@import './public/contact.css';
+@import './public/footer.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';

@@ -1,0 +1,355 @@
+/* ==========================================================================
+   DEMINA — Convocatorias públicas
+   ========================================================================== */
+
+.demina-calls {
+  background: #06080c;
+  color: #dce8f5;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.demina-calls__hero {
+  border-bottom: 1px solid #243047;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.18), transparent 34%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
+}
+
+.demina-calls__hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.demina-calls__eyebrow {
+  display: inline-flex;
+  border: 1px solid rgba(59, 130, 246, 0.75);
+  background: rgba(59, 130, 246, 0.08);
+  padding: 0.32rem 0.8rem;
+  color: #3b82f6;
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.demina-calls__title {
+  margin-top: 1.2rem;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.demina-calls__intro {
+  max-width: 720px;
+  margin-top: 1.3rem;
+  color: #7a98bc;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.demina-calls__content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.demina-calls__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #243047;
+  border-left: 1px solid #243047;
+}
+
+.demina-call-card {
+  display: flex;
+  min-height: 500px;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid #243047;
+  border-bottom: 1px solid #243047;
+  background: #0f1520;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.demina-call-card:hover {
+  background: #141c2a;
+}
+
+.demina-call-card__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a0e15;
+}
+
+.demina-call-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.48) contrast(1.12);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.demina-call-card:hover .demina-call-card__image img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.9) contrast(1.08) saturate(1.08);
+}
+
+.demina-call-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #3a5070;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.demina-call-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.demina-call-card__status {
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  padding: 0.28rem 0.58rem;
+  background: #3b82f6;
+  color: #06080c;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-call-card__status--closed {
+  background: #243047;
+  color: #7a98bc;
+}
+
+.demina-call-card__title {
+  margin-bottom: 0.8rem;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.demina-call-card:hover .demina-call-card__title {
+  color: #3b82f6;
+}
+
+.demina-call-card__description {
+  color: #7a98bc;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.demina-call-card__dates {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  color: rgba(220, 232, 245, 0.62);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-calls__empty {
+  border: 1px dashed rgba(122, 152, 188, 0.35);
+  padding: 2rem;
+  color: #7a98bc;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-calls__pagination {
+  margin-top: 2.5rem;
+}
+
+.demina-call-show {
+  background: #06080c;
+  color: #dce8f5;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.demina-call-show__hero {
+  position: relative;
+  min-height: 68vh;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.demina-call-show__image {
+  position: absolute;
+  inset: 0;
+}
+
+.demina-call-show__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.42) contrast(1.15);
+}
+
+.demina-call-show__fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.22), transparent 35%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
+}
+
+.demina-call-show__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(6, 8, 12, 0.98), rgba(6, 8, 12, 0.55)),
+    linear-gradient(120deg, rgba(6, 8, 12, 0.85), transparent 65%);
+}
+
+.demina-call-show__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 7rem 2rem 4rem;
+}
+
+.demina-call-show__breadcrumb {
+  margin-bottom: 1.4rem;
+  color: #7a98bc;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-call-show__breadcrumb a {
+  color: #7a98bc;
+  text-decoration: none;
+}
+
+.demina-call-show__title {
+  max-width: 980px;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.demina-call-show__short {
+  max-width: 760px;
+  margin-top: 1.25rem;
+  color: #b9cbe0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.demina-call-show__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 2rem;
+  border: 1px solid #243047;
+  background: #243047;
+}
+
+.demina-call-show__fact {
+  background: rgba(15, 21, 32, 0.88);
+  padding: 1rem;
+}
+
+.demina-call-show__fact-label {
+  margin-bottom: 0.45rem;
+  color: #3a5070;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.demina-call-show__fact-value {
+  color: #dce8f5;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.demina-call-show__body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.demina-call-show__section {
+  margin-bottom: 3rem;
+}
+
+.demina-call-show__section h2 {
+  margin-bottom: 1rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 2.3rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.demina-call-show__prose {
+  color: #dce8f5;
+  line-height: 1.8;
+}
+
+.demina-call-show__prose p {
+  margin-bottom: 1.2rem;
+}
+
+.demina-call-show__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.demina-call-show__button {
+  display: inline-flex;
+  border: 1px solid #3b82f6;
+  background: #1a56db;
+  padding: 0.85rem 1.2rem;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demina-call-show__button--ghost {
+  background: transparent;
+  border-color: rgba(220, 232, 245, 0.32);
+}
+
+@media (max-width: 900px) {
+  .demina-calls__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .demina-call-show__facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .demina-calls__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-calls__hero-inner,
+  .demina-calls__content,
+  .demina-call-show__content,
+  .demina-call-show__body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
