@@ -228,53 +228,76 @@
     @endif
 </section>
 
-@if(!empty($featuredCall))
-    @php
-        $callImage = $featuredCall->cover_image;
-        $callImageUrl = $callImage
-            ? (\Illuminate\Support\Str::startsWith($callImage, ['http://', 'https://'])
-                ? $callImage
-                : asset('storage/' . $callImage))
-            : null;
+@if(!empty($featuredCalls) && $featuredCalls->count())
+    <section class="demina-home-calls">
+        <div class="demina-home-calls__head">
+            <div>
+                <div class="demina-home-calls__eyebrow">
+                    Convocatorias abiertas
+                </div>
 
-        $callEndDate = $featuredCall->end_date
-            ? \Illuminate\Support\Carbon::parse($featuredCall->end_date)->format('d/m/Y')
-            : null;
-    @endphp
-
-    <section class="demina-home-call">
-        <div class="demina-home-call__media">
-            @if($callImageUrl)
-                <img src="{{ $callImageUrl }}" alt="{{ $featuredCall->title }}" loading="lazy">
-            @else
-                <div class="demina-home-call__fallback"></div>
-            @endif
-        </div>
-
-        <div class="demina-home-call__content">
-            <div class="demina-home-call__eyebrow">
-                Convocatoria abierta
+                <h2 class="demina-home-calls__title">
+                    Participa<br>
+                    en DEMINA
+                </h2>
             </div>
 
-            <h2 class="demina-home-call__title">
-                {{ $featuredCall->title }}
-            </h2>
-
-            @if($featuredCall->short_description)
-                <p class="demina-home-call__description">
-                    {{ $featuredCall->short_description }}
-                </p>
-            @endif
-
-            @if($callEndDate)
-                <div class="demina-home-call__date">
-                    Cierre: {{ $callEndDate }}
-                </div>
-            @endif
-
-            <a href="{{ route('calls.show', $featuredCall->slug) }}" class="demina-home-call__button">
-                Ver convocatoria →
+            <a href="{{ route('calls.index') }}" class="demina-home-calls__link">
+                Ver todas →
             </a>
+        </div>
+
+        <div class="demina-home-calls__grid">
+            @foreach($featuredCalls as $call)
+                @php
+                    $callImage = $call->cover_image;
+                    $callImageUrl = $callImage
+                        ? (\Illuminate\Support\Str::startsWith($callImage, ['http://', 'https://'])
+                            ? $callImage
+                            : asset('storage/' . $callImage))
+                        : null;
+
+                    $callEndDate = $call->end_date
+                        ? \Illuminate\Support\Carbon::parse($call->end_date)->format('d/m/Y')
+                        : null;
+                @endphp
+
+                <a href="{{ route('calls.show', $call->slug) }}" class="demina-home-call-card">
+                    <div class="demina-home-call-card__image">
+                        @if($callImageUrl)
+                            <img src="{{ $callImageUrl }}" alt="{{ $call->title }}" loading="lazy">
+                        @else
+                            <div class="demina-home-call-card__fallback"></div>
+                        @endif
+                    </div>
+
+                    <div class="demina-home-call-card__body">
+                        <div class="demina-home-call-card__status">
+                            Abierta
+                        </div>
+
+                        <h3 class="demina-home-call-card__title">
+                            {{ $call->title }}
+                        </h3>
+
+                        @if($call->short_description)
+                            <p class="demina-home-call-card__description">
+                                {{ $call->short_description }}
+                            </p>
+                        @endif
+
+                        @if($callEndDate)
+                            <div class="demina-home-call-card__date">
+                                Cierre: {{ $callEndDate }}
+                            </div>
+                        @endif
+
+                        <span class="demina-home-call-card__button">
+                            Ver convocatoria →
+                        </span>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </section>
 @endif

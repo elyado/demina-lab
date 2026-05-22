@@ -97,6 +97,16 @@ class CallResource extends Resource
                     ])
                     ->columns(2),
 
+                \Filament\Forms\Components\FileUpload::make('pdf_path')
+                    ->label('PDF de la convocatoria')
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->disk('public')
+                    ->directory('calls/pdfs')
+                    ->visibility('public')
+                    ->moveFiles()
+                    ->nullable()
+                    ->columnSpanFull(),
+
                 \Filament\Schemas\Components\Section::make('Estado')
                     ->schema([
                         \Filament\Forms\Components\Select::make('status')

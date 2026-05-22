@@ -43,10 +43,11 @@ class PageController extends Controller
             ->get();
 
 
-        $featuredCall = Call::query()
+        $featuredCalls = Call::query()
             ->where('status', 'open')
             ->orderBy('end_date')
-            ->first();
+            ->limit(4)
+            ->get();
 
 
         return view('public.home', compact(
@@ -54,7 +55,7 @@ class PageController extends Controller
             'featuredExhibitions',
             'spaces',
             'siteSetting',
-            'featuredCall'
+            'featuredCalls'
         ));
     }
 

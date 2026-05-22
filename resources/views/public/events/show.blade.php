@@ -69,7 +69,8 @@
                     <div class="demina-event-fact">
                         <div class="demina-event-fact__label">Fecha</div>
                         <div class="demina-event-fact__value">
-                            {{ $eventDate ? $eventDate->format('d/m/Y') : 'Por confirmar' }}
+                            {{ $eventDate ? $eventDate->translatedFormat('l d \d\e F Y') : 'Por confirmar' }}
+                            
                         </div>
                     </div>
 

@@ -1048,38 +1048,99 @@
 }
 
 /* ==========================================================================
-   Convocatoria destacada en Home
+   Convocatorias abiertas en Home
    ========================================================================== */
 
-.demina-home-call {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 520px;
+.demina-home-calls {
   border-top: 4px solid var(--demina-cobalt);
   border-bottom: 1px solid var(--demina-border-2);
   background: var(--demina-surface);
 }
 
-.demina-home-call__media {
-  position: relative;
-  overflow: hidden;
-  background: var(--demina-bg-2);
+.demina-home-calls__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid var(--demina-border-2);
+  padding: 2.5rem 2rem;
 }
 
-.demina-home-call__media img {
+.demina-home-calls__eyebrow {
+  margin-bottom: 0.8rem;
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.demina-home-calls__title {
+  color: var(--demina-white);
+  font-family: var(--demina-display);
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.demina-home-calls__link {
+  color: var(--demina-cobalt-3);
+  font-family: var(--demina-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demina-home-calls__link:hover {
+  color: #fff;
+}
+
+.demina-home-calls__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.demina-home-call-card {
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--demina-border-2);
+  border-bottom: 1px solid var(--demina-border-2);
+  background: var(--demina-bg-2);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.demina-home-call-card:hover {
+  background: var(--demina-surface-2);
+}
+
+.demina-home-call-card__image {
+  height: 170px;
+  overflow: hidden;
+  background: var(--demina-bg);
+}
+
+.demina-home-call-card__image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.45) contrast(1.12);
-  transition: filter 0.5s ease, transform 0.6s ease;
+  filter: grayscale(100%) brightness(0.48) contrast(1.12);
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.demina-home-call:hover .demina-home-call__media img {
-  transform: scale(1.03);
-  filter: grayscale(0%) brightness(0.88) contrast(1.08) saturate(1.08);
+.demina-home-call-card:hover .demina-home-call-card__image img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.9) contrast(1.08) saturate(1.08);
 }
 
-.demina-home-call__fallback {
+.demina-home-call-card__fallback {
   width: 100%;
   height: 100%;
   background:
@@ -1087,78 +1148,83 @@
     linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
 }
 
-.demina-home-call__content {
+.demina-home-call-card__body {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: center;
-  padding: 3rem 2.5rem;
+  padding: 1.35rem;
 }
 
-.demina-home-call__eyebrow {
+.demina-home-call-card__status {
   width: fit-content;
-  margin-bottom: 1.25rem;
-  border: 1px solid var(--demina-cobalt);
-  background: rgba(59, 130, 246, 0.08);
-  padding: 0.32rem 0.8rem;
-  color: var(--demina-cobalt-3);
+  margin-bottom: 1rem;
+  background: var(--demina-cobalt-3);
+  padding: 0.25rem 0.55rem;
+  color: var(--demina-bg);
   font-family: var(--demina-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.24em;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.demina-home-call__title {
-  max-width: 720px;
+.demina-home-call-card__title {
   color: var(--demina-white);
   font-family: var(--demina-display);
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
-.demina-home-call__description {
-  max-width: 620px;
-  margin-top: 1.25rem;
-  color: var(--demina-white-2);
-  font-size: 0.9rem;
-  line-height: 1.7;
+.demina-home-call-card:hover .demina-home-call-card__title {
+  color: var(--demina-cobalt-3);
 }
 
-.demina-home-call__date {
-  margin-top: 1.5rem;
+.demina-home-call-card__description {
+  margin-top: 0.9rem;
+  color: var(--demina-white-2);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.demina-home-call-card__date {
+  margin-top: auto;
+  padding-top: 1.2rem;
   color: rgba(220, 232, 245, 0.7);
   font-family: var(--demina-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.demina-home-call__button {
+.demina-home-call-card__button {
+  display: inline-flex;
   width: fit-content;
-  margin-top: 2rem;
-  border: 1px solid var(--demina-cobalt);
-  background: var(--demina-cobalt);
-  padding: 0.8rem 1.2rem;
-  color: #fff;
-  font-family: var(--demina-mono);
-  font-size: 0.72rem;
+  margin-top: 1rem;
+  color: var(--demina-cobalt-3);
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-decoration: none;
   text-transform: uppercase;
 }
 
-.demina-home-call__button:hover {
-  background: var(--demina-cobalt-2);
+@media (max-width: 1100px) {
+  .demina-home-calls__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 900px) {
-  .demina-home-call {
+@media (max-width: 700px) {
+  .demina-home-calls__head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .demina-home-calls__grid {
     grid-template-columns: 1fr;
   }
 
-  .demina-home-call__media {
-    min-height: 320px;
+  .demina-home-call-card__image {
+    height: 180px;
   }
 }

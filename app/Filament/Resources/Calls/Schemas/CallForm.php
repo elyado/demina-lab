@@ -54,6 +54,17 @@ class CallForm
                     ->visibility('public')
                     ->moveFiles()
                     ->nullable(),
+                FileUpload::make('pdf_path')
+                    ->label('PDF de la convocatoria')
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->disk('public')
+                    ->directory('calls/pdfs')
+                    ->visibility('public')
+                    ->moveFiles()
+                    ->nullable()
+                    ->columnSpanFull(),
+
+
                 Select::make('status')
                     ->options(['draft' => 'Draft', 'open' => 'Open', 'closed' => 'Closed', 'archived' => 'Archived'])
                     ->default('draft')
