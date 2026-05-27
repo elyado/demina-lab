@@ -17,20 +17,20 @@ use Filament\Tables\Table;
 class SiteSettingResource extends Resource
 {
     protected static ?string $model = SiteSetting::class;
-protected static string|\UnitEnum|null $navigationGroup = 'Configuración del sitio';
-protected static ?string $navigationLabel = 'Configuración del sitio';
-protected static ?string $modelLabel = 'Configuración del sitio';
-protected static ?string $pluralModelLabel = 'Configuraciones del sitio';
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuración del sitio';
+    protected static ?string $navigationLabel = 'Configuración del sitio';
+    protected static ?string $modelLabel = 'Configuración del sitio';
+    protected static ?string $pluralModelLabel = 'Configuraciones del sitio';
 
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static ?int $navigationSort = 1;
     protected static ?string $recordTitleAttribute = 'site_name';
 
-public static function form(Schema $schema): Schema
-{
-    return SiteSettingForm::configure($schema);
-}
+    public static function form(Schema $schema): Schema
+    {
+        return SiteSettingForm::configure($schema);
+    }
 
     public static function table(Table $table): Table
     {
@@ -53,9 +53,8 @@ public static function form(Schema $schema): Schema
         ];
     }
 
-public static function canCreate(): bool
-{
-    return \App\Models\SiteSetting::count() === 0;
-}
-
+    public static function canCreate(): bool
+    {
+        return \App\Models\SiteSetting::count() === 0;
+    }
 }

@@ -12,7 +12,9 @@ use App\Models\Call;
 use App\Models\MediaItem;
 use App\Models\PressItem;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use App\Models\Person;
+use App\Models\Partner;
+use App\Models\Workshop;
 
 
 class PageController extends Controller
@@ -250,5 +252,69 @@ class PageController extends Controller
             ->firstOrFail();
 
         return view('public.page', compact('page'));
+    }
+
+
+    public function people()
+    {
+        $teamPeople = Person::query()
+            ->where('is_active', true)
+            ->where('role_type', 'team')
+            ->orderByDesc('is_featured')
+            ->orderBy('name')
+            ->get();
+
+        $people = Person::query()
+            ->where('is_active', true)
+            ->where('role_type', '!=', 'team')
+            ->orderByDesc('is_featured')
+            ->orderBy('name')
+            ->get();
+
+        return view('public.people.index', compact('teamPeople', 'people'));
+    }
+
+    public function person(string $slug)
+    {
+        $person = Person::query()
+            ->where('is_active', true)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('public.people.show', compact('person'));
+    }
+
+    public function partners()
+    {
+        $partners = Partner::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get()
+            ->groupBy('partner_type');
+
+        return view('public.partners.index', compact('partners'));
+    }
+
+    public function workshops()
+    {
+        $workshops = Workshop::query()
+            ->with(['event', 'facilitator'])
+            ->whereIn('status', ['published', 'open', 'active'])
+            ->orderByDesc('created_at')
+            ->paginate(12);
+
+        return view('public.workshops.index', compact('workshops'));
+    }
+
+    public function workshop(string $slug)
+    {
+        $workshop = Workshop::query()
+            ->with(['event', 'facilitator'])
+            ->where('slug', $slug)
+            ->whereIn('status', ['published', 'open', 'active'])
+            ->firstOrFail();
+
+        return view('public.workshops.show', compact('workshop'));
     }
 }

@@ -21,8 +21,8 @@ class ArtworkResource extends Resource
     protected static ?string $navigationLabel = 'Obras';
     protected static ?string $modelLabel = 'Obra';
     protected static ?string $pluralModelLabel = 'Obras';
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-swatch';
+    protected static ?int $navigationSort = 1;
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

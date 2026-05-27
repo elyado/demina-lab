@@ -22,8 +22,8 @@ class MediaItemResource extends Resource
     protected static ?string $modelLabel = 'Archivo multimedia';
     protected static ?string $pluralModelLabel = 'Archivo multimedia';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-photo';
+    protected static ?int $navigationSort = 4;
     protected static ?string $recordTitleAttribute = 'tilte';
 
     public static function form(Schema $schema): Schema
@@ -74,7 +74,7 @@ class MediaItemResource extends Resource
                             ->disk('public')
                             ->visibility('public')
                             ->directory('media/files'),
-                            
+
 
                         \Filament\Forms\Components\TextInput::make('external_url')
                             ->label('URL externa')

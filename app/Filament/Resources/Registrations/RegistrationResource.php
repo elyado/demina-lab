@@ -18,18 +18,13 @@ use UnitEnum;
 class RegistrationResource extends Resource
 {
     protected static ?string $model = Registration::class;
-
     protected static string|UnitEnum|null $navigationGroup = 'Programación';
-
     protected static ?string $navigationLabel = 'Registros';
-
     protected static ?string $modelLabel = 'registro';
-
     protected static ?string $pluralModelLabel = 'registros';
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
     protected static ?string $recordTitleAttribute = 'name';
+    protected static ?int $navigationSort = 5 ;
 
     public static function form(Schema $schema): Schema
     {

@@ -11,6 +11,9 @@
 @import './public/archive.css';
 @import './public/contact.css';
 @import './public/footer.css';
+@import './public/people.css';
+@import './public/partners.css';
+@import './public/workshops.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

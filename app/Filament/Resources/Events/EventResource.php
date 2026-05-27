@@ -22,9 +22,9 @@ class EventResource extends Resource
     protected static ?string $navigationLabel = 'Eventos';
     protected static ?string $modelLabel = 'Evento';
     protected static ?string $pluralModelLabel = 'Eventos';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?int $navigationSort = 2;
 
-
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'tilte';
 

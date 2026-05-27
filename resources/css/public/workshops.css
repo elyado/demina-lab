@@ -1,0 +1,377 @@
+/* ==========================================================================
+   DEMINA — Talleres públicos
+   ========================================================================== */
+
+.demina-workshops {
+  background: #06080c;
+  color: #dce8f5;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.demina-workshops__hero {
+  border-bottom: 1px solid #243047;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.18), transparent 34%),
+    linear-gradient(135deg, #06080c 0%, #0f1520 55%, #05070a 100%);
+}
+
+.demina-workshops__hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.demina-workshops__eyebrow {
+  display: inline-flex;
+  border: 1px solid rgba(59, 130, 246, 0.75);
+  background: rgba(59, 130, 246, 0.08);
+  padding: 0.32rem 0.8rem;
+  color: #3b82f6;
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.demina-workshops__title {
+  margin-top: 1.2rem;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.demina-workshops__intro {
+  max-width: 720px;
+  margin-top: 1.3rem;
+  color: #7a98bc;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.demina-workshops__content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.demina-workshops__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #243047;
+  border-left: 1px solid #243047;
+}
+
+.demina-workshop-card {
+  display: flex;
+  min-height: 420px;
+  flex-direction: column;
+  border-right: 1px solid #243047;
+  border-bottom: 1px solid #243047;
+  background: #0f1520;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.demina-workshop-card:hover {
+  background: #141c2a;
+}
+
+.demina-workshop-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.demina-workshop-card__status {
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  background: #3b82f6;
+  padding: 0.28rem 0.58rem;
+  color: #06080c;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-workshop-card__title {
+  margin-bottom: 0.8rem;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.demina-workshop-card:hover .demina-workshop-card__title {
+  color: #3b82f6;
+}
+
+.demina-workshop-card__meta {
+  margin-bottom: 1rem;
+  color: rgba(220, 232, 245, 0.62);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.demina-workshop-card__description {
+  color: #7a98bc;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.demina-workshop-card__footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  color: #3b82f6;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-workshops__empty {
+  border: 1px dashed rgba(122, 152, 188, 0.35);
+  background: rgba(15, 21, 32, 0.72);
+  padding: 2rem;
+  color: #7a98bc;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-workshops__pagination {
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .demina-workshops__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .demina-workshops__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-workshops__hero-inner,
+  .demina-workshops__content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.demina-workshop-show__prose ul {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demina-workshop-show__prose li {
+  position: relative;
+  border-left: 2px solid #3b82f6;
+  background: rgba(15, 21, 32, 0.72);
+  padding: 0.7rem 0.9rem 0.7rem 1rem;
+  color: #dce8f5;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.demina-workshop-show__prose li::before {
+  content: '→';
+  margin-right: 0.5rem;
+  color: #3b82f6;
+}
+
+/* ==========================================================================
+   DEMINA — Detalle de taller
+   ========================================================================== */
+
+.demina-workshop-show {
+  background: #06080c;
+  color: #dce8f5;
+}
+
+.demina-workshop-show__hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+  border-bottom: 1px solid #243047;
+}
+
+.demina-workshop-show__breadcrumb {
+  margin-bottom: 1.4rem;
+  color: #7a98bc;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__breadcrumb a {
+  color: #7a98bc;
+  text-decoration: none;
+}
+
+.demina-workshop-show__breadcrumb a:hover {
+  color: #dce8f5;
+}
+
+.demina-workshop-show__status {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  background: #3b82f6;
+  padding: 0.28rem 0.62rem;
+  color: #06080c;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__title {
+  max-width: 980px;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(3.8rem, 10vw, 8.5rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 2rem;
+  border: 1px solid #243047;
+  background: #243047;
+}
+
+.demina-workshop-show__facts div {
+  background: #0f1520;
+  padding: 1rem;
+}
+
+.demina-workshop-show__facts span {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #3a5070;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__facts strong {
+  color: #dce8f5;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.demina-workshop-show__body {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 3rem;
+}
+
+.demina-workshop-show__section + .demina-workshop-show__section {
+  margin-top: 3rem;
+  border-top: 1px solid #243047;
+  padding-top: 2rem;
+}
+
+.demina-workshop-show__section h2,
+.demina-workshop-show__box h2 {
+  margin-bottom: 1rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__prose {
+  color: #dce8f5;
+  line-height: 1.85;
+}
+
+.demina-workshop-show__prose p {
+  margin-bottom: 1.2rem;
+}
+
+.demina-workshop-show__side {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.demina-workshop-show__box {
+  border: 1px solid #243047;
+  background: #0f1520;
+  padding: 1.25rem;
+}
+
+.demina-workshop-show__pill {
+  border: 1px solid rgba(122, 152, 188, 0.35);
+  padding: 0.55rem 0.7rem;
+  color: #7a98bc;
+  font-size: 0.72rem;
+  margin-bottom: 0.6rem;
+}
+
+.demina-workshop-show__button,
+.demina-workshop-show__back {
+  display: block;
+  margin-top: 0.8rem;
+  border: 1px solid #3b82f6;
+  background: #1a56db;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demina-workshop-show__back {
+  border-color: rgba(220, 232, 245, 0.32);
+  background: transparent;
+}
+
+.demina-workshop-show__button:hover,
+.demina-workshop-show__back:hover {
+  background: #2563eb;
+}
+
+@media (max-width: 900px) {
+  .demina-workshop-show__facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .demina-workshop-show__body {
+    grid-template-columns: 1fr;
+  }
+
+  .demina-workshop-show__side {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .demina-workshop-show__hero,
+  .demina-workshop-show__body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .demina-workshop-show__facts {
+    grid-template-columns: 1fr;
+  }
+}

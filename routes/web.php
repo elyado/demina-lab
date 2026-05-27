@@ -17,5 +17,10 @@ Route::get('/archivo', [PageController::class, 'archive'])->name('archive.index'
 Route::get('/contacto', [PageController::class, 'contact'])->name('contact');
 Route::get('/agenda/{event:slug}', [EventController::class, 'show'])
     ->name('events.show');
-    Route::get('/convocatorias', [PageController::class, 'calls'])->name('calls.index');
-Route::get('/convocatorias/{slug}', [PageController::class, 'call'])->name('calls.show');   
+Route::get('/convocatorias', [PageController::class, 'calls'])->name('calls.index');
+Route::get('/convocatorias/{slug}', [PageController::class, 'call'])->name('calls.show');
+Route::get('/personas', [PageController::class, 'people'])->name('people.index');
+Route::get('/personas/{slug}', [PageController::class, 'person'])->name('people.show');
+Route::get('/aliados', [PageController::class, 'partners'])->name('partners.index');
+Route::get('/talleres', [PageController::class, 'workshops'])->name('workshops.index');
+Route::get('/talleres/{slug}', [PageController::class, 'workshop'])->name('workshops.show');

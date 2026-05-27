@@ -22,8 +22,8 @@ class SpaceResource extends Resource
     protected static ?string $modelLabel = 'espacio';
     protected static ?string $pluralModelLabel = 'espacios';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-storefront';
+    protected static ?int $navigationSort = 1;
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema

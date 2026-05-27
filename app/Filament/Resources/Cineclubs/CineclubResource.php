@@ -37,7 +37,9 @@ class CineclubResource extends Resource
     protected static ?string $navigationLabel = 'Cineclub';
     protected static ?string $modelLabel = 'función de cineclub';
     protected static ?string $pluralModelLabel = 'cineclub';
-
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-film';
+    protected static ?int $navigationSort = 1;
+    
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
