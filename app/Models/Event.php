@@ -83,7 +83,12 @@ class Event extends Model
 
     public function scopeUpcoming($query)
     {
-        return $query->whereDate('start_date', '>=', now()->toDateString());
+        $today = now()->toDateString();
+
+        return $query->where(function ($query) use ($today) {
+            $query->whereDate('start_date', '>=', $today)
+                ->orWhereDate('end_date', '>=', $today);
+        });
     }
 
     public function scopeFeatured($query)
@@ -95,6 +100,22 @@ class Event extends Model
     {
         return $query->where('show_on_home', true);
     }
+    public function scopePast($query)
+    {
+        $today = now()->toDateString();
+
+        return $query->where(function ($query) use ($today) {
+            $query->where(function ($query) use ($today) {
+                $query->whereNull('end_date')
+                    ->whereDate('start_date', '<', $today);
+            })
+                ->orWhere(function ($query) use ($today) {
+                    $query->whereNotNull('end_date')
+                        ->whereDate('end_date', '<', $today);
+                });
+        });
+    }
+
     public function getFilmTrailerEmbedUrlAttribute(): ?string
     {
         return VideoEmbed::url($this->film_trailer_url);

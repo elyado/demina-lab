@@ -26,6 +26,7 @@ class PageController extends Controller
         $featuredEvents = Event::query()
             ->with(['activityType', 'space'])
             ->where('status', 'published')
+            ->upcoming()
             ->orderBy('start_date')
             ->orderBy('start_time')
             ->limit(6)

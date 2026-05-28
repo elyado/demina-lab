@@ -6,6 +6,14 @@
     <header class="mb-12">
         <p class="mb-3 text-sm uppercase tracking-[0.3em] text-neutral-400">Demina</p>
         <h1 class="text-4xl font-bold md:text-6xl">Agenda</h1>
+        <div class="mt-6">
+    <a
+        href="{{ route('events.archive') }}"
+        class="inline-flex rounded-full border border-neutral-700 px-5 py-3 text-sm font-semibold text-neutral-200 transition hover:bg-white hover:text-black"
+    >
+        Ver eventos pasados →
+    </a>
+</div>
     </header>
 
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

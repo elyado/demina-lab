@@ -24,3 +24,5 @@ Route::get('/personas/{slug}', [PageController::class, 'person'])->name('people.
 Route::get('/aliados', [PageController::class, 'partners'])->name('partners.index');
 Route::get('/talleres', [PageController::class, 'workshops'])->name('workshops.index');
 Route::get('/talleres/{slug}', [PageController::class, 'workshop'])->name('workshops.show');
+Route::get('/memoria', [EventController::class, 'archive'])
+    ->name('events.archive');
