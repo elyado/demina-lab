@@ -13,13 +13,11 @@
             </div>
 
             <h1 class="demina-agenda__title">
-                Agenda
+                Memoria
             </h1>
-        
-
+         
             <p class="demina-agenda__intro">
-                Actividades, talleres, cineclub, encuentros, procesos de formación, exhibiciones y experiencias abiertas en DEMINA Laboratorio de Artes.
-            </p>
+                Actividades, cineclub, talleres y procesos realizados anteriormente en DEMINA.   </p>
 
             <div class="demina-agenda__meta">
                 <span class="demina-agenda__meta-item">
@@ -136,23 +134,13 @@
             </a>
             @endforeach
         </div>
-<div>
-    <p><a href="{{ route('events.archive') }}" class="demina-link-more">
-                Ver eventos pasados →
-            </a></p>
-</div>
+
         <div class="demina-agenda__pagination">
             {{ $events->links() }}
         </div>
-
-
         @else
         <div class="demina-agenda__empty">
             Todavía no hay actividades publicadas.
-    <h3><a href="{{ route('events.archive') }}" class="demina-link-more">
-                Ver eventos pasados →
-            </a>
-</h3>
         </div>
         @endif
     </section>

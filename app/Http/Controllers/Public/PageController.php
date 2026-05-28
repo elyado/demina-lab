@@ -66,7 +66,8 @@ class PageController extends Controller
     {
         $events = Event::query()
             ->with(['activityType', 'space'])
-            ->where('status', 'published')
+            ->published()
+            ->upcoming()
             ->orderBy('start_date')
             ->orderBy('start_time')
             ->paginate(12);
@@ -74,7 +75,18 @@ class PageController extends Controller
         return view('public.agenda.index', compact('events'));
     }
 
+    public function memoria()
+    {
+        $events = Event::query()
+            ->with(['activityType', 'space'])
+            ->published()
+            ->past()
+            ->orderByDesc('start_date')
+            ->orderByDesc('start_time')
+            ->paginate(12);
 
+        return view('public.agenda.memoria', compact('events'));
+    }
 
 
     public function event(string $slug)
