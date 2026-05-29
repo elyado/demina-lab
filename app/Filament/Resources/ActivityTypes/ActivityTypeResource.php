@@ -54,4 +54,8 @@ class ActivityTypeResource extends Resource
             'edit' => EditActivityType::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

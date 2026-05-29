@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\EventController;
 use App\Http\Controllers\Public\PageController;
+use App\Http\Controllers\Public\CallApplicationController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -24,5 +25,13 @@ Route::get('/personas/{slug}', [PageController::class, 'person'])->name('people.
 Route::get('/aliados', [PageController::class, 'partners'])->name('partners.index');
 Route::get('/talleres', [PageController::class, 'workshops'])->name('workshops.index');
 Route::get('/talleres/{slug}', [PageController::class, 'workshop'])->name('workshops.show');
+Route::get('/convocatoria-gatillo', [CallApplicationController::class, 'create'])
+    ->name('gatillo.form');
+
+Route::post('/convocatoria-gatillo', [CallApplicationController::class, 'store'])
+    ->name('gatillo.store');
+
+Route::get('/convocatoria-gatillo/gracias/{folio}', [CallApplicationController::class, 'thanks'])
+    ->name('gatillo.thanks');
 
 

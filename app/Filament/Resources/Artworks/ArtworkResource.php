@@ -132,4 +132,8 @@ class ArtworkResource extends Resource
             'edit' => EditArtwork::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+{
+    return auth()->user()?->isAdmin() ?? false;
+}
 }

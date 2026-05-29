@@ -320,4 +320,8 @@ class EventResource extends Resource
         return parent::getEloquentQuery()
             ->whereDoesntHave('activityType', fn(Builder $query) => $query->where('slug', 'cineclub'));
     }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

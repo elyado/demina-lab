@@ -202,4 +202,8 @@ class PageResource extends Resource
             'edit' => EditPage::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

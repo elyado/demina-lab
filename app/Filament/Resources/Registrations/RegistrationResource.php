@@ -24,7 +24,7 @@ class RegistrationResource extends Resource
     protected static ?string $pluralModelLabel = 'registros';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static ?string $recordTitleAttribute = 'name';
-    protected static ?int $navigationSort = 4 ;
+    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {
@@ -48,5 +48,9 @@ class RegistrationResource extends Resource
             'create' => CreateRegistration::route('/create'),
             'edit' => EditRegistration::route('/{record}/edit'),
         ];
+    }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
     }
 }

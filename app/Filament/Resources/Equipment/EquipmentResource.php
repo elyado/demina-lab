@@ -54,4 +54,8 @@ class EquipmentResource extends Resource
             'edit' => EditEquipment::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

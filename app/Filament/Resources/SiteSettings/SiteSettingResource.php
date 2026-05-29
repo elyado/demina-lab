@@ -57,4 +57,9 @@ class SiteSettingResource extends Resource
     {
         return \App\Models\SiteSetting::count() === 0;
     }
+
+       public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

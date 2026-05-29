@@ -288,4 +288,8 @@ class ExhibitionResource extends Resource
             'edit' => EditExhibition::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

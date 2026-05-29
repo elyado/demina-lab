@@ -113,6 +113,9 @@ class FilmScreeningResource extends Resource
         ];
     }
 
-
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
     protected static bool $shouldRegisterNavigation = false;
 }

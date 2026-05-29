@@ -19,3 +19,87 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+
+/* Formulario Convocatoria Gatillo */
+
+.demina-form-page {
+    background: #050505;
+    color: #ffffff;
+}
+
+.demina-form-section {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #111111;
+    border-radius: 2rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.demina-form-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    line-height: 1;
+}
+
+.demina-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.demina-field label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #d4d4d4;
+}
+
+.demina-input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #050505;
+    color: #ffffff;
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.demina-input:focus {
+    border-color: #ffffff;
+}
+
+textarea.demina-input {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+input[type="file"].demina-input {
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.demina-help {
+    color: #a3a3a3;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.demina-photo-box {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+    background: #0a0a0a;
+}
+
+.demina-submit-btn {
+    border-radius: 999px;
+    background: #ffffff;
+    color: #000000;
+    padding: 1rem 2rem;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.demina-submit-btn:hover {
+    background: #d4d4d4;
+}

@@ -54,4 +54,8 @@ class TeamMemberResource extends Resource
             'edit' => EditTeamMember::route('/{record}/edit'),
         ];
     }
+       public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

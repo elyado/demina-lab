@@ -197,4 +197,8 @@ class WorkshopResource extends Resource
             'edit' => EditWorkshop::route('/{record}/edit'),
         ];
     }
+       public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 }

@@ -19,7 +19,7 @@ class PressItemResource extends Resource
 {
     protected static ?string $model = PressItem::class;
 
-       protected static string|\UnitEnum|null $navigationGroup = 'Archivos / Medios';
+    protected static string|\UnitEnum|null $navigationGroup = 'Archivos / Medios';
 
     protected static ?string $navigationLabel = 'Prensa';
 
@@ -53,5 +53,9 @@ class PressItemResource extends Resource
             'create' => CreatePressItem::route('/create'),
             'edit' => EditPressItem::route('/{record}/edit'),
         ];
+    }
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
     }
 }

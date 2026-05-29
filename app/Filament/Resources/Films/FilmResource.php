@@ -156,6 +156,10 @@ class FilmResource extends Resource
             'edit' => EditFilm::route('/{record}/edit'),
         ];
     }
+    public static function canAccess(): bool
+{
+    return auth()->user()?->isAdmin() ?? false;
+}
 
 
     protected static bool $shouldRegisterNavigation = false;
